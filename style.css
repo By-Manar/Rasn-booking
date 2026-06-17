@@ -1,7 +1,176 @@
+*{
+  box-sizing:border-box;
+}
+
 body{
-    background:#1f1f1f;
-    color:white;
-    text-align:center;
-    font-family:Tahoma;
-    padding:50px;
+  margin:0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: radial-gradient(circle at top, #3a3937 0%, #202020 55%, #161616 100%);
+  color:#fff;
+}
+
+.page{
+  max-width:480px;
+  margin:auto;
+  padding:28px 18px 50px;
+}
+
+.hero{
+  text-align:center;
+  padding:25px 0 10px;
+}
+
+.logo{
+  width:135px;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:34px;
+  color:#e0c2a2;
+  margin:10px 0;
+  line-height:1.4;
+}
+
+.hero p{
+  color:#d8d8d8;
+  font-size:16px;
+  line-height:1.9;
+  margin:0 auto 22px;
+}
+
+.hero-tags{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.hero-tags a,
+.hero-tags span{
+  border:1px solid #c7a886;
+  color:#e0c2a2;
+  text-decoration:none;
+  border-radius:30px;
+  padding:11px 16px;
+  font-size:14px;
+}
+
+.booking-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:26px;
+  padding:22px;
+  margin-top:26px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.steps{
+  background:rgba(255,255,255,.05);
+  border-radius:18px;
+  padding:10px;
+  display:grid;
+  gap:8px;
+  margin-bottom:24px;
+}
+
+.step{
+  background:#3a3a39;
+  border-radius:14px;
+  padding:12px;
+  color:#ddd;
+  font-size:14px;
+  text-align:center;
+}
+
+.step.active{
+  background:#c7a886;
+  color:#1d1d1d;
+  font-weight:bold;
+}
+
+h2{
+  font-size:20px;
+  margin:24px 0 14px;
+  color:#eee;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.cards button{
+  min-height:110px;
+  background:#333;
+  border:1.5px solid #555;
+  color:#fff;
+  border-radius:20px;
+  font-size:17px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.cards button:hover,
+.cards button:focus{
+  background:#c7a886;
+  color:#1d1d1d;
+  border-color:#c7a886;
+}
+
+.cards strong{
+  display:block;
+  font-size:32px;
+  margin:8px 0;
+}
+
+.cards small{
+  display:block;
+  opacity:.75;
+  font-size:14px;
+}
+
+.time button{
+  min-height:85px;
+  font-weight:bold;
+}
+
+form{
+  margin-top:10px;
+}
+
+label{
+  display:block;
+  margin:16px 0 8px;
+  color:#e8e8e8;
+  font-size:15px;
+}
+
+input{
+  width:100%;
+  background:#2c2c2c;
+  border:1.5px solid #4e4e4e;
+  border-radius:16px;
+  padding:15px;
+  color:#fff;
+  font-size:16px;
+}
+
+input:focus{
+  outline:none;
+  border-color:#c7a886;
+}
+
+.submit{
+  width:100%;
+  background:#c7a886;
+  color:#1d1d1d;
+  border:none;
+  border-radius:18px;
+  padding:16px;
+  margin-top:24px;
+  font-size:19px;
+  font-weight:bold;
+  cursor:pointer;
 }
