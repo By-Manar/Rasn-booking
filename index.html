@@ -53,31 +53,37 @@
       <button type="button" data-time="9:00 - 10:00 مساءً">9:00 - 10:00 <small>مساءً</small></button>
     </div>
 
-    <div class="choice-box" id="choiceBox">
-      لم يتم اختيار اليوم والوقت بعد
-    </div>
+    <p class="note">بعد اختيار اليوم والوقت ستظهر نافذة تأكيد البيانات.</p>
 
-    <h2>بيانات الحضور</h2>
+  </section>
+
+</main>
+
+<div class="modal" id="bookingModal">
+  <div class="modal-card">
+    <h2>تأكيد الموعد</h2>
+    <p class="selected-date" id="selectedText"></p>
 
     <form>
       <label>الاسم الكامل</label>
-      <input type="text" id="fullName">
+      <input type="text" id="fullName" placeholder="الاسم كما في الهوية">
 
       <label>رقم الجوال</label>
       <input type="tel" id="phone" placeholder="05XXXXXXXX">
 
       <label>رقم الفيلا</label>
-      <input type="text" id="villa">
+      <input type="text" id="villa" placeholder="مثال: A-12">
 
       <label>البريد الإلكتروني (اختياري)</label>
-      <input type="email" id="email">
+      <input type="email" id="email" placeholder="example@email.com">
 
-      <button class="submit" type="button">تأكيد الموعد</button>
+      <div class="modal-actions">
+        <button class="submit" type="button">تأكيد الموعد</button>
+        <button class="cancel" type="button" onclick="closeModal()">إلغاء</button>
+      </div>
     </form>
-
-  </section>
-
-</main>
+  </div>
+</div>
 
 <script>
 let selectedDay = "";
@@ -85,37 +91,36 @@ let selectedTime = "";
 
 const dayButtons = document.querySelectorAll('.day-cards button');
 const timeButtons = document.querySelectorAll('.time button');
-const choiceBox = document.getElementById('choiceBox');
-
-function updateChoiceBox(){
-  if(selectedDay && selectedTime){
-    choiceBox.textContent = `الموعد المختار: ${selectedDay} - ${selectedTime}`;
-  } else if(selectedDay){
-    choiceBox.textContent = `اليوم المختار: ${selectedDay}`;
-  } else if(selectedTime){
-    choiceBox.textContent = `الوقت المختار: ${selectedTime}`;
-  } else {
-    choiceBox.textContent = "لم يتم اختيار اليوم والوقت بعد";
-  }
-}
+const modal = document.getElementById('bookingModal');
+const selectedText = document.getElementById('selectedText');
 
 dayButtons.forEach(button => {
   button.addEventListener('click', () => {
     dayButtons.forEach(btn => btn.classList.remove('selected'));
     button.classList.add('selected');
     selectedDay = button.dataset.day;
-    updateChoiceBox();
   });
 });
 
 timeButtons.forEach(button => {
   button.addEventListener('click', () => {
+    if(!selectedDay){
+      alert("يرجى اختيار اليوم أولاً");
+      return;
+    }
+
     timeButtons.forEach(btn => btn.classList.remove('selected'));
     button.classList.add('selected');
     selectedTime = button.dataset.time;
-    updateChoiceBox();
+
+    selectedText.textContent = `${selectedDay} • ${selectedTime}`;
+    modal.classList.add('show');
   });
 });
+
+function closeModal(){
+  modal.classList.remove('show');
+}
 </script>
 
 </body>
