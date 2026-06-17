@@ -1,127 +1,333 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حجز موعد ملاك رسن</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<main class="page">
-
-  <section class="hero">
-    <div class="logos">
-      <img src="logo-njoom.png" class="logo-njoom" alt="نجوم السلام">
-      <div class="line"></div>
-      <img src="logo.png" class="logo-rasn" alt="رسن">
-      <div class="line"></div>
-      <img src="logo-fursan.png" class="logo-fursan" alt="الفرسان">
-    </div>
-
-    <h1>حجز موعد ملاك رسن</h1>
-    <p>يسعدنا دعوتكم لحضور فعالية ملاك رسن، اختر الموعد المناسب وأكمل بياناتك لتأكيد الحضور.</p>
-
-    <div class="hero-tags">
-      <a href="https://maps.app.goo.gl/8xNA6Y2S74TzhMPK8?g_st=ic" target="_blank">موقع الفعالية</a>
-      <span>28 يونيو - 1 يوليو 2026</span>
-    </div>
-  </section>
-
-  <section class="booking-card">
-
-    <div class="steps">
-      <div class="step active">١ اختر اليوم</div>
-      <div class="step">٢ اختر الوقت</div>
-      <div class="step">٣ أكد بياناتك</div>
-    </div>
-
-    <h2>اختر اليوم</h2>
-    <div class="cards day-cards">
-      <button type="button" data-day="الأحد 28 يونيو">الأحد <strong>28</strong><small>يونيو</small></button>
-      <button type="button" data-day="الإثنين 29 يونيو">الإثنين <strong>29</strong><small>يونيو</small></button>
-      <button type="button" data-day="الثلاثاء 30 يونيو">الثلاثاء <strong>30</strong><small>يونيو</small></button>
-      <button type="button" data-day="الأربعاء 1 يوليو">الأربعاء <strong>1</strong><small>يوليو</small></button>
-    </div>
-
-    <h2>اختر الوقت</h2>
-    <div class="cards time">
-      <button type="button" data-time="5:00 - 6:00 مساءً">5:00 - 6:00 <small>مساءً</small></button>
-      <button type="button" data-time="6:00 - 7:00 مساءً">6:00 - 7:00 <small>مساءً</small></button>
-      <button type="button" data-time="7:00 - 8:00 مساءً">7:00 - 8:00 <small>مساءً</small></button>
-      <button type="button" data-time="8:00 - 9:00 مساءً">8:00 - 9:00 <small>مساءً</small></button>
-      <button type="button" data-time="9:00 - 10:00 مساءً">9:00 - 10:00 <small>مساءً</small></button>
-    </div>
-
-    <p class="note">بعد اختيار اليوم والوقت ستظهر نافذة تأكيد البيانات.</p>
-
-  </section>
-
-</main>
-
-<div class="modal" id="bookingModal">
-  <div class="modal-card">
-    <h2>تأكيد الموعد</h2>
-    <p class="selected-date" id="selectedText"></p>
-
-    <form>
-      <label>الاسم الكامل</label>
-      <input type="text" placeholder="الاسم كما في الهوية">
-
-      <label>رقم الجوال</label>
-      <input type="tel" placeholder="05XXXXXXXX">
-
-      <label>رقم الفيلا</label>
-      <input type="text" placeholder="مثال: A-12">
-
-      <label>البريد الإلكتروني (اختياري)</label>
-      <input type="email" placeholder="example@email.com">
-
-      <div class="modal-actions">
-        <button class="submit" type="button">تأكيد الموعد</button>
-        <button class="cancel" type="button" onclick="closeModal()">إلغاء</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<script>
-let selectedDay = "";
-let selectedTime = "";
-
-const dayButtons = document.querySelectorAll('.day-cards button');
-const timeButtons = document.querySelectorAll('.time button');
-const modal = document.getElementById('bookingModal');
-const selectedText = document.getElementById('selectedText');
-
-dayButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    dayButtons.forEach(btn => btn.classList.remove('selected'));
-    button.classList.add('selected');
-    selectedDay = button.dataset.day;
-  });
-});
-
-timeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    if(!selectedDay){
-      alert("يرجى اختيار اليوم أولاً");
-      return;
-    }
-
-    timeButtons.forEach(btn => btn.classList.remove('selected'));
-    button.classList.add('selected');
-    selectedTime = button.dataset.time;
-
-    selectedText.textContent = `${selectedDay} • ${selectedTime}`;
-    modal.classList.add('show');
-  });
-});
-
-function closeModal(){
-  modal.classList.remove('show');
+*{
+  box-sizing:border-box;
 }
-</script>
 
-</body>
-</html>
+body{
+  margin:0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: radial-gradient(circle at top, #244f90 0%, #0b2a56 45%, #061733 100%);
+  color:#fff;
+}
+
+.page{
+  max-width:520px;
+  margin:auto;
+  padding:30px 18px 55px;
+}
+
+.hero{
+  text-align:center;
+  padding:24px 0 10px;
+}
+
+.logos{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  margin-bottom:35px;
+}
+
+.logos img{
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
+
+.logo-njoom{
+  width:125px;
+}
+
+.logo-rasn{
+  width:115px;
+}
+
+.logo-fursan{
+  width:135px;
+}
+
+.line{
+  width:2px;
+  height:72px;
+  background:rgba(255,255,255,.45);
+}
+
+h1{
+  font-size:34px;
+  color:#ffffff;
+  margin:10px 0;
+  line-height:1.4;
+  font-weight:800;
+}
+
+.hero p{
+  color:#dce8ff;
+  font-size:16px;
+  line-height:1.9;
+  margin:0 auto 22px;
+}
+
+.hero-tags{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.hero-tags a,
+.hero-tags span{
+  border:1px solid rgba(255,255,255,.55);
+  color:#ffffff;
+  background:rgba(255,255,255,.08);
+  text-decoration:none;
+  border-radius:30px;
+  padding:11px 16px;
+  font-size:14px;
+}
+
+.booking-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:28px;
+  padding:22px;
+  margin-top:28px;
+  box-shadow:0 25px 60px rgba(0,0,0,.28);
+  backdrop-filter: blur(8px);
+}
+
+.steps{
+  background:rgba(255,255,255,.07);
+  border-radius:18px;
+  padding:10px;
+  display:grid;
+  gap:8px;
+  margin-bottom:24px;
+}
+
+.step{
+  background:rgba(5,23,51,.75);
+  border-radius:14px;
+  padding:12px;
+  color:#dce8ff;
+  font-size:14px;
+  text-align:center;
+}
+
+.step.active{
+  background:#ffffff;
+  color:#0b2a56;
+  font-weight:bold;
+}
+
+h2{
+  font-size:21px;
+  margin:24px 0 14px;
+  color:#fff;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.cards button{
+  min-height:110px;
+  background:rgba(6,23,51,.72);
+  border:1.5px solid rgba(255,255,255,.24);
+  color:#fff;
+  border-radius:20px;
+  font-size:17px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.cards button:hover,
+.cards button.selected{
+  background:#ffffff;
+  color:#0b2a56;
+  border-color:#ffffff;
+}
+
+.cards strong{
+  display:block;
+  font-size:32px;
+  margin:8px 0;
+}
+
+.cards small{
+  display:block;
+  opacity:.8;
+  font-size:14px;
+}
+
+.time button{
+  min-height:85px;
+  font-weight:bold;
+}
+
+.note{
+  margin-top:22px;
+  color:#dce8ff;
+  text-align:center;
+  font-size:14px;
+}
+
+/* Modal */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:999;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-card{
+  width:100%;
+  max-width:430px;
+  background:linear-gradient(180deg, #1d4d91 0%, #0b2a56 100%);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:28px;
+  padding:26px;
+  box-shadow:0 25px 70px rgba(0,0,0,.45);
+  color:#fff;
+}
+
+.modal-card h2{
+  margin-top:0;
+  font-size:28px;
+  color:#ffffff;
+}
+
+.selected-date{
+  color:#dce8ff;
+  font-size:16px;
+  margin-bottom:22px;
+  line-height:1.8;
+}
+
+form{
+  margin-top:10px;
+}
+
+label{
+  display:block;
+  margin:16px 0 8px;
+  color:#ffffff;
+  font-size:15px;
+}
+
+input{
+  width:100%;
+  background:#061733;
+  border:1.5px solid rgba(255,255,255,.28);
+  border-radius:16px;
+  padding:15px;
+  color:#fff;
+  font-size:16px;
+}
+
+input::placeholder{
+  color:rgba(255,255,255,.42);
+}
+
+input:focus{
+  outline:none;
+  border-color:#ffffff;
+}
+
+.modal-actions{
+  display:flex;
+  gap:12px;
+  margin-top:24px;
+}
+
+.submit{
+  flex:1;
+  background:#ffffff;
+  color:#0b2a56;
+  border:none;
+  border-radius:18px;
+  padding:16px;
+  font-size:19px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.cancel{
+  background:#08224a;
+  color:#fff;
+  border:1.5px solid rgba(255,255,255,.35);
+  border-radius:18px;
+  padding:16px 22px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.submit:hover,
+.cancel:hover{
+  opacity:.92;
+}
+
+@media(max-width:430px){
+  .page{
+    padding:28px 16px 50px;
+  }
+
+  .logos{
+    gap:12px;
+    margin-bottom:32px;
+  }
+
+  .logo-njoom{
+    width:98px;
+  }
+
+  .logo-rasn{
+    width:92px;
+  }
+
+  .logo-fursan{
+    width:108px;
+  }
+
+  .line{
+    height:58px;
+  }
+
+  h1{
+    font-size:31px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .cards{
+    gap:10px;
+  }
+
+  .modal-card{
+    padding:22px;
+  }
+
+  .modal-actions{
+    gap:10px;
+  }
+
+  .submit{
+    font-size:18px;
+  }
+
+  .cancel{
+    padding:16px 18px;
+  }
+}
