@@ -29,8 +29,8 @@ body{
 }
 
 .logos img{
-  max-width:92px;
-  max-height:70px;
+  max-width:120px;
+  max-height:auto;
   object-fit:contain;
   display:block;
 }
