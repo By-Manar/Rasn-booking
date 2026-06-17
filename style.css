@@ -24,20 +24,26 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:22px;
+  gap:18px;
   margin-bottom:35px;
 }
 
 .logos img{
-  width:145px;
   height:auto;
-  max-height:82px;
   object-fit:contain;
   display:block;
 }
 
-.logos img:nth-child(3){
-  width:105px;
+.logo-njoom{
+  width:125px;
+}
+
+.logo-rasn{
+  width:115px;
+}
+
+.logo-fursan{
+  width:135px;
 }
 
 .line{
@@ -167,6 +173,7 @@ h2{
   font-size:14px;
 }
 
+/* Modal */
 .modal{
   position:fixed;
   inset:0;
@@ -185,8 +192,8 @@ h2{
 .modal-card{
   width:100%;
   max-width:430px;
-  background:#183b73;
-  border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(180deg, #1d4d91 0%, #0b2a56 100%);
+  border:1px solid rgba(255,255,255,.22);
   border-radius:28px;
   padding:26px;
   box-shadow:0 25px 70px rgba(0,0,0,.45);
@@ -196,7 +203,7 @@ h2{
 .modal-card h2{
   margin-top:0;
   font-size:28px;
-  color:#fff;
+  color:#ffffff;
 }
 
 .selected-date{
@@ -213,14 +220,14 @@ form{
 label{
   display:block;
   margin:16px 0 8px;
-  color:#eaf1ff;
+  color:#ffffff;
   font-size:15px;
 }
 
 input{
   width:100%;
-  background:#08224a;
-  border:1.5px solid rgba(255,255,255,.22);
+  background:#061733;
+  border:1.5px solid rgba(255,255,255,.28);
   border-radius:16px;
   padding:15px;
   color:#fff;
@@ -228,7 +235,7 @@ input{
 }
 
 input::placeholder{
-  color:rgba(255,255,255,.38);
+  color:rgba(255,255,255,.42);
 }
 
 input:focus{
@@ -257,7 +264,7 @@ input:focus{
 .cancel{
   background:#08224a;
   color:#fff;
-  border:1.5px solid rgba(255,255,255,.28);
+  border:1.5px solid rgba(255,255,255,.35);
   border-radius:18px;
   padding:16px 22px;
   font-size:17px;
@@ -276,17 +283,20 @@ input:focus{
   }
 
   .logos{
-    gap:13px;
+    gap:12px;
     margin-bottom:32px;
   }
 
-  .logos img{
-    width:105px;
-    max-height:70px;
+  .logo-njoom{
+    width:98px;
   }
 
-  .logos img:nth-child(3){
-    width:82px;
+  .logo-rasn{
+    width:92px;
+  }
+
+  .logo-fursan{
+    width:108px;
   }
 
   .line{
