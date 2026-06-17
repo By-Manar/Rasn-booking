@@ -1,3 +1,7 @@
 body{
-font-family:Tahoma;
+    background:#1f1f1f;
+    color:white;
+    text-align:center;
+    font-family:Tahoma;
+    padding:50px;
 }
