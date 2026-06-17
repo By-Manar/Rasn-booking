@@ -3,184 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حجز موعد فعالية تسليم فلل رسن</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Tahoma,sans-serif;
-}
-
-body{
-    background:#1f1f1f;
-    color:#fff;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:40px 20px;
-}
-
-.logo{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.logo img{
-    width:140px;
-}
-
-h1{
-    text-align:center;
-    margin-bottom:10px;
-    color:#d6b89b;
-}
-
-.subtitle{
-    text-align:center;
-    color:#ccc;
-    margin-bottom:30px;
-}
-
-.info-box{
-    background:#2c2c2c;
-    border:1px solid #444;
-    border-radius:20px;
-    padding:25px;
-    margin-bottom:30px;
-}
-
-.event-btn{
-    display:inline-block;
-    background:#d6b89b;
-    color:#000;
-    text-decoration:none;
-    padding:12px 25px;
-    border-radius:12px;
-    font-weight:bold;
-    margin-top:15px;
-}
-
-.form-box{
-    background:#2c2c2c;
-    border-radius:20px;
-    padding:25px;
-}
-
-.input-group{
-    margin-bottom:15px;
-}
-
-label{
-    display:block;
-    margin-bottom:8px;
-}
-
-input,
-select{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:#3a3a3a;
-    color:white;
-}
-
-.submit-btn{
-    width:100%;
-    padding:16px;
-    background:#d6b89b;
-    color:black;
-    border:none;
-    border-radius:12px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.submit-btn:hover{
-    opacity:.9;
-}
-</style>
+<title>حجز موعد ملاك رسن</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+<main class="page">
 
-    <div class="logo">
-        <!-- حطي رابط شعار رسن هنا -->
-        <!-- <img src="logo.png"> -->
+  <section class="hero">
+    <img src="logo.png" class="logo" alt="RASN Logo">
+    <h1>حجز موعد ملاك رسن</h1>
+    <p>يسعدنا دعوتكم لحضور فعالية ملاك رسن، اختر الموعد المناسب وأكمل بياناتك لتأكيد الحضور.</p>
+
+    <div class="hero-tags">
+      <a href="https://maps.app.goo.gl/8xNA6Y2S74TzhMPK8?g_st=ic" target="_blank">📍 موقع الفعالية</a>
+      <span>📅 28 يونيو - 1 يوليو 2026</span>
+    </div>
+  </section>
+
+  <section class="booking-card">
+
+    <div class="steps">
+      <div class="step active">١ اختر اليوم</div>
+      <div class="step">٢ اختر الوقت</div>
+      <div class="step">٣ أكد بياناتك</div>
     </div>
 
-    <h1>حجز موعد فعالية تسليم فلل رسن</h1>
-
-    <p class="subtitle">
-        يرجى اختيار الموعد المناسب وإكمال البيانات لتأكيد الحضور
-    </p>
-
-    <div class="info-box">
-
-        <h2>موقع الفعالية</h2>
-
-        <p style="margin-top:10px;">
-            قاعة الماسة
-        </p>
-
-        <a class="event-btn"
-        href="https://maps.app.goo.gl/8xNA6Y2S74TzhMPK8?g_st=ic"
-        target="_blank">
-        عرض موقع الفعالية
-        </a>
-
+    <h2>اختر اليوم</h2>
+    <div class="cards">
+      <button>الأحد <strong>28</strong><small>يونيو</small></button>
+      <button>الإثنين <strong>29</strong><small>يونيو</small></button>
+      <button>الثلاثاء <strong>30</strong><small>يونيو</small></button>
+      <button>الأربعاء <strong>1</strong><small>يوليو</small></button>
     </div>
 
-    <div class="form-box">
-
-        <div class="input-group">
-            <label>الاسم الكامل</label>
-            <input type="text">
-        </div>
-
-        <div class="input-group">
-            <label>رقم الجوال</label>
-            <input type="tel">
-        </div>
-
-        <div class="input-group">
-            <label>البريد الإلكتروني (اختياري)</label>
-            <input type="email">
-        </div>
-
-        <div class="input-group">
-            <label>اليوم</label>
-            <select>
-                <option>الأحد 28 يونيو</option>
-                <option>الإثنين 29 يونيو</option>
-                <option>الثلاثاء 30 يونيو</option>
-            </select>
-        </div>
-
-        <div class="input-group">
-            <label>الوقت</label>
-            <select>
-                <option>5:00 - 6:00 مساء</option>
-                <option>6:00 - 7:00 مساء</option>
-                <option>7:00 - 8:00 مساء</option>
-                <option>8:00 - 9:00 مساء</option>
-            </select>
-        </div>
-
-        <button class="submit-btn">
-            تأكيد الموعد
-        </button>
-
+    <h2>اختر الوقت</h2>
+    <div class="cards time">
+      <button>5:00 - 6:00 <small>مساءً</small></button>
+      <button>6:00 - 7:00 <small>مساءً</small></button>
+      <button>7:00 - 8:00 <small>مساءً</small></button>
+      <button>8:00 - 9:00 <small>مساءً</small></button>
+      <button>9:00 - 10:00 <small>مساءً</small></button>
     </div>
 
-</div>
+    <h2>بيانات الحضور</h2>
+
+    <form>
+      <label>الاسم الكامل</label>
+      <input type="text">
+
+      <label>رقم الجوال</label>
+      <input type="tel" placeholder="05XXXXXXXX">
+
+      <label>رقم الفيلا</label>
+      <input type="text">
+
+      <label>البريد الإلكتروني (اختياري)</label>
+      <input type="email">
+
+      <button class="submit" type="button">تأكيد الموعد</button>
+    </form>
+
+  </section>
+
+</main>
 
 </body>
 </html>
