@@ -24,20 +24,24 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:16px;
-  margin-bottom:26px;
+  gap:18px;
+  margin-bottom:30px;
 }
 
 .logos img{
-  max-width:120px;
-  max-height:auto;
+  width:115px;
+  max-height:78px;
   object-fit:contain;
   display:block;
 }
 
+.logos img:nth-child(3){
+  width:82px;
+}
+
 .line{
   width:1px;
-  height:58px;
+  height:64px;
   background:rgba(255,255,255,.45);
 }
 
@@ -132,7 +136,7 @@ h2{
 }
 
 .cards button:hover,
-.cards button:focus{
+.cards button.selected{
   background:#ffffff;
   color:#0b2a56;
   border-color:#ffffff;
@@ -153,6 +157,18 @@ h2{
 .time button{
   min-height:85px;
   font-weight:bold;
+}
+
+.choice-box{
+  margin-top:18px;
+  background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,255,255,.22);
+  color:#ffffff;
+  border-radius:16px;
+  padding:14px;
+  text-align:center;
+  font-size:15px;
+  line-height:1.7;
 }
 
 form{
@@ -208,8 +224,16 @@ input:focus{
   }
 
   .logos img{
-    max-width:78px;
-    max-height:58px;
+    width:92px;
+    max-height:64px;
+  }
+
+  .logos img:nth-child(3){
+    width:70px;
+  }
+
+  .line{
+    height:50px;
   }
 
   h1{
