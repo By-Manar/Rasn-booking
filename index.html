@@ -11,7 +11,6 @@
 <main class="page">
 
   <section class="hero">
-
     <div class="logos">
       <img src="logo-fursan.png" alt="الفرسان">
       <div class="line"></div>
@@ -24,8 +23,8 @@
     <p>يسعدنا دعوتكم لحضور فعالية ملاك رسن، اختر الموعد المناسب وأكمل بياناتك لتأكيد الحضور.</p>
 
     <div class="hero-tags">
-      <a href="https://maps.app.goo.gl/8xNA6Y2S74TzhMPK8?g_st=ic" target="_blank"> موقع الفعالية</a>
-      <span> 28 يونيو - 1 يوليو 2026</span>
+      <a href="https://maps.app.goo.gl/8xNA6Y2S74TzhMPK8?g_st=ic" target="_blank">موقع الفعالية</a>
+      <span>28 يونيو - 1 يوليو 2026</span>
     </div>
   </section>
 
@@ -38,36 +37,40 @@
     </div>
 
     <h2>اختر اليوم</h2>
-    <div class="cards">
-      <button>الأحد <strong>28</strong><small>يونيو</small></button>
-      <button>الإثنين <strong>29</strong><small>يونيو</small></button>
-      <button>الثلاثاء <strong>30</strong><small>يونيو</small></button>
-      <button>الأربعاء <strong>1</strong><small>يوليو</small></button>
+    <div class="cards day-cards">
+      <button type="button" data-day="الأحد 28 يونيو">الأحد <strong>28</strong><small>يونيو</small></button>
+      <button type="button" data-day="الإثنين 29 يونيو">الإثنين <strong>29</strong><small>يونيو</small></button>
+      <button type="button" data-day="الثلاثاء 30 يونيو">الثلاثاء <strong>30</strong><small>يونيو</small></button>
+      <button type="button" data-day="الأربعاء 1 يوليو">الأربعاء <strong>1</strong><small>يوليو</small></button>
     </div>
 
     <h2>اختر الوقت</h2>
     <div class="cards time">
-      <button>5:00 - 6:00 <small>مساءً</small></button>
-      <button>6:00 - 7:00 <small>مساءً</small></button>
-      <button>7:00 - 8:00 <small>مساءً</small></button>
-      <button>8:00 - 9:00 <small>مساءً</small></button>
-      <button>9:00 - 10:00 <small>مساءً</small></button>
+      <button type="button" data-time="5:00 - 6:00 مساءً">5:00 - 6:00 <small>مساءً</small></button>
+      <button type="button" data-time="6:00 - 7:00 مساءً">6:00 - 7:00 <small>مساءً</small></button>
+      <button type="button" data-time="7:00 - 8:00 مساءً">7:00 - 8:00 <small>مساءً</small></button>
+      <button type="button" data-time="8:00 - 9:00 مساءً">8:00 - 9:00 <small>مساءً</small></button>
+      <button type="button" data-time="9:00 - 10:00 مساءً">9:00 - 10:00 <small>مساءً</small></button>
+    </div>
+
+    <div class="choice-box" id="choiceBox">
+      لم يتم اختيار اليوم والوقت بعد
     </div>
 
     <h2>بيانات الحضور</h2>
 
     <form>
       <label>الاسم الكامل</label>
-      <input type="text">
+      <input type="text" id="fullName">
 
       <label>رقم الجوال</label>
-      <input type="tel" placeholder="05XXXXXXXX">
+      <input type="tel" id="phone" placeholder="05XXXXXXXX">
 
       <label>رقم الفيلا</label>
-      <input type="text">
+      <input type="text" id="villa">
 
       <label>البريد الإلكتروني (اختياري)</label>
-      <input type="email">
+      <input type="email" id="email">
 
       <button class="submit" type="button">تأكيد الموعد</button>
     </form>
@@ -75,6 +78,45 @@
   </section>
 
 </main>
+
+<script>
+let selectedDay = "";
+let selectedTime = "";
+
+const dayButtons = document.querySelectorAll('.day-cards button');
+const timeButtons = document.querySelectorAll('.time button');
+const choiceBox = document.getElementById('choiceBox');
+
+function updateChoiceBox(){
+  if(selectedDay && selectedTime){
+    choiceBox.textContent = `الموعد المختار: ${selectedDay} - ${selectedTime}`;
+  } else if(selectedDay){
+    choiceBox.textContent = `اليوم المختار: ${selectedDay}`;
+  } else if(selectedTime){
+    choiceBox.textContent = `الوقت المختار: ${selectedTime}`;
+  } else {
+    choiceBox.textContent = "لم يتم اختيار اليوم والوقت بعد";
+  }
+}
+
+dayButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    dayButtons.forEach(btn => btn.classList.remove('selected'));
+    button.classList.add('selected');
+    selectedDay = button.dataset.day;
+    updateChoiceBox();
+  });
+});
+
+timeButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    timeButtons.forEach(btn => btn.classList.remove('selected'));
+    button.classList.add('selected');
+    selectedTime = button.dataset.time;
+    updateChoiceBox();
+  });
+});
+</script>
 
 </body>
 </html>
