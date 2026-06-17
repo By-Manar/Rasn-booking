@@ -39,7 +39,7 @@ body{
 }
 
 .logo-rasn{
-  width:115px;
+  width:145px;
 }
 
 .logo-fursan{
@@ -173,8 +173,8 @@ h2{
   font-size:14px;
 }
 
-/* Modal */
-.modal{
+.modal,
+.success-modal{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.72);
@@ -185,11 +185,17 @@ h2{
   z-index:999;
 }
 
-.modal.show{
+.success-modal{
+  z-index:1000;
+}
+
+.modal.show,
+.success-modal.show{
   display:flex;
 }
 
-.modal-card{
+.modal-card,
+.success-card{
   width:100%;
   max-width:430px;
   background:linear-gradient(180deg, #1d4d91 0%, #0b2a56 100%);
@@ -200,7 +206,8 @@ h2{
   color:#fff;
 }
 
-.modal-card h2{
+.modal-card h2,
+.success-card h2{
   margin-top:0;
   font-size:28px;
   color:#ffffff;
@@ -277,6 +284,84 @@ input:focus{
   opacity:.92;
 }
 
+.success-card{
+  text-align:center;
+}
+
+.success-icon{
+  width:78px;
+  height:78px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:rgba(90, 220, 145, .18);
+  color:#7ee0a3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:46px;
+  font-weight:bold;
+}
+
+.success-card h2{
+  font-size:30px;
+  margin:8px 0;
+}
+
+.success-subtitle{
+  color:#dce8ff;
+  margin:0 0 22px;
+  font-size:15px;
+}
+
+.ticket-card{
+  background:#061733;
+  border:1.5px solid rgba(255,255,255,.28);
+  border-radius:22px;
+  padding:16px;
+  text-align:right;
+}
+
+.ticket-row{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:13px 0;
+  border-bottom:1px dashed rgba(255,255,255,.20);
+}
+
+.ticket-row:last-child{
+  border-bottom:none;
+}
+
+.ticket-row span{
+  color:#a7c4ff;
+  font-size:15px;
+}
+
+.ticket-row strong{
+  color:#fff;
+  font-size:16px;
+  text-align:left;
+}
+
+.success-note{
+  color:#dce8ff;
+  line-height:1.8;
+  font-size:14px;
+  margin:20px 0;
+}
+
+.done-btn{
+  background:#ffffff;
+  color:#0b2a56;
+  border:none;
+  border-radius:16px;
+  padding:14px 34px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
 @media(max-width:430px){
   .page{
     padding:28px 16px 50px;
@@ -292,7 +377,7 @@ input:focus{
   }
 
   .logo-rasn{
-    width:92px;
+    width:112px;
   }
 
   .logo-fursan{
@@ -315,7 +400,8 @@ input:focus{
     gap:10px;
   }
 
-  .modal-card{
+  .modal-card,
+  .success-card{
     padding:22px;
   }
 
