@@ -1,15 +1,421 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>ملتقى ملاك رسن</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>تجربة لفعالية حجز ملاك رسن</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:linear-gradient(180deg,#222,#30302f);
+  color:#fff;
+}
+.page{
+  max-width:430px;
+  margin:auto;
+  padding:35px 22px 60px;
+}
+.logo{
+  text-align:center;
+  color:#d7b895;
+  font-size:54px;
+  font-weight:bold;
+  margin-top:20px;
+}
+.logo span{
+  display:block;
+  font-size:28px;
+  letter-spacing:2px;
+}
+h1{
+  text-align:center;
+  font-size:30px;
+  margin:28px 0 12px;
+}
+.subtitle{
+  text-align:center;
+  color:#d8c1aa;
+  font-size:17px;
+  line-height:1.8;
+}
+.info{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin:25px 0;
+}
+.pill{
+  border:1px solid #c9a889;
+  color:#d8c1aa;
+  border-radius:28px;
+  padding:12px 18px;
+  font-size:14px;
+}
+.box{
+  border:1px solid #555;
+  background:rgba(255,255,255,.04);
+  border-radius:22px;
+  padding:22px;
+  margin:25px 0;
+  text-align:center;
+  color:#ddd;
+  line-height:1.8;
+}
+.steps{
+  display:grid;
+  gap:12px;
+  margin-top:18px;
+}
+.step{
+  background:#3d3d3c;
+  border-radius:14px;
+  padding:14px;
+  font-weight:bold;
+}
+.step span{
+  background:#d2b293;
+  color:#222;
+  border-radius:50%;
+  padding:5px 10px;
+  margin-left:8px;
+}
+.section-title{
+  font-size:20px;
+  margin:35px 0 15px;
+  color:#ddd;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.card{
+  background:#3a3a39;
+  border:2px solid #555;
+  border-radius:20px;
+  padding:22px 10px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s;
+}
+.card.active{
+  background:#c7a988;
+  color:#222;
+  border-color:#c7a988;
+}
+.card strong{
+  display:block;
+  font-size:28px;
+  margin:8px 0;
+}
+.card small{
+  color:inherit;
+  opacity:.8;
+}
+.note{
+  text-align:center;
+  color:#aaa;
+  margin:35px 0 10px;
+  font-size:14px;
+}
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:99;
+}
+.modal.show{display:flex}
+.modal-card{
+  width:100%;
+  max-width:420px;
+  background:#3b3b3a;
+  border:1px solid #666;
+  border-radius:24px;
+  padding:24px;
+}
+.modal-card h2{
+  margin-top:0;
+  font-size:26px;
+}
+.selected{
+  color:#d8c1aa;
+  margin-bottom:20px;
+}
+label{
+  display:block;
+  color:#ddd;
+  margin:15px 0 8px;
+}
+input{
+  width:100%;
+  background:#252525;
+  border:2px solid #444;
+  border-radius:16px;
+  padding:15px;
+  color:white;
+  font-size:16px;
+}
+input:focus{
+  outline:none;
+  border-color:#d2b293;
+}
+.error{
+  color:#ff9b9b;
+  font-size:13px;
+  margin-top:6px;
+  display:none;
+}
+.actions{
+  display:flex;
+  gap:12px;
+  margin-top:24px;
+}
+button{
+  border:none;
+  border-radius:16px;
+  padding:15px 18px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.confirm{
+  flex:1;
+  background:#d2b293;
+  color:#222;
+}
+.cancel{
+  background:transparent;
+  border:2px solid #666;
+  color:#ddd;
+}
+.success{
+  text-align:center;
+}
+.check{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  background:#49624f;
+  color:#7ee09b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  margin:0 auto 20px;
+}
+.ticket{
+  border:1px solid #d2b293;
+  border-radius:18px;
+  padding:18px;
+  margin:22px 0;
+  text-align:right;
+  line-height:2.1;
+}
+.ticket b{
+  color:#d2b293;
+}
+</style>
 </head>
+
 <body>
 
-<h1>ملتقى ملاك رسن</h1>
+<div class="page">
 
-<p>جاري تجهيز النظام...</p>
+  <div class="logo">
+    رسن
+    <span>RASN</span>
+  </div>
+
+  <h1>فعالية حجز مُلّاك رسن</h1>
+
+  <p class="subtitle">
+    خطواتك الأخيرة قبل الاستلام، وعروض حصرية لتجهيز منزلك
+  </p>
+
+  <div class="info">
+    <div class="pill">📍 استراحة الماسة الملكية</div>
+    <div class="pill">📅 28 يونيو - 1 يوليو 2026</div>
+  </div>
+
+  <div class="box">
+    يسعدنا دعوتكم لحضور <b>فعالية حجز مُلّاك رسن</b>.<br>
+    اختر اليوم، ثم اختر الوقت المناسب لك، وأكمل بياناتك لتأكيد الموعد.
+
+    <div class="steps">
+      <div class="step"><span>١</span>اختر اليوم</div>
+      <div class="step"><span>٢</span>اختر الوقت</div>
+      <div class="step"><span>٣</span>أكد بياناتك</div>
+    </div>
+  </div>
+
+  <div class="section-title">اختر اليوم</div>
+  <div class="grid" id="days"></div>
+
+  <div class="section-title">الأوقات المتاحة</div>
+  <div class="grid" id="times"></div>
+
+  <p class="note">
+    بياناتك تُستخدم لتأكيد الموعد فقط، وستصلك رسالة تأكيد على جوالك.
+  </p>
+
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <h2>تأكيد الموعد</h2>
+    <div class="selected" id="selectedText"></div>
+
+    <label>الاسم الكامل</label>
+    <input id="name" type="text">
+
+    <label>رقم الجوال</label>
+    <input id="phone" type="text" placeholder="05XXXXXXXX">
+    <div class="error" id="phoneError">رقم جوال سعودي غير صحيح</div>
+
+    <label>رقم الفيلا</label>
+    <input id="villa" type="text">
+
+    <label>البريد الإلكتروني (اختياري)</label>
+    <input id="email" type="email">
+    <div class="error" id="emailError">البريد الإلكتروني غير صحيح</div>
+
+    <div class="actions">
+      <button class="confirm" onclick="confirmBooking()">تأكيد الموعد</button>
+      <button class="cancel" onclick="closeModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="successModal">
+  <div class="modal-card success">
+    <div class="check">✓</div>
+    <h2>تم تأكيد موعدك</h2>
+    <p>نراك في موعدك، حياك الله</p>
+
+    <div class="ticket" id="ticketBox"></div>
+
+    <p class="note">
+      يرجى الحضور في الموعد المحدد ومعك إثبات الهوية. ستصلك رسالة تأكيد على جوالك.
+    </p>
+
+    <button class="confirm" onclick="closeSuccess()">تم</button>
+  </div>
+</div>
+
+<script>
+const days = [
+  {day:"الأحد", date:"28", month:"يونيو 2026"},
+  {day:"الإثنين", date:"29", month:"يونيو 2026"},
+  {day:"الثلاثاء", date:"30", month:"يونيو 2026"},
+  {day:"الأربعاء", date:"1", month:"يوليو 2026"}
+];
+
+const times = [
+  "5:00 - 6:00 مساءً",
+  "6:00 - 7:00 مساءً",
+  "7:00 - 8:00 مساءً",
+  "8:00 - 9:00 مساءً",
+  "9:00 - 10:00 مساءً"
+];
+
+let selectedDay = null;
+let selectedTime = null;
+
+const daysBox = document.getElementById("days");
+const timesBox = document.getElementById("times");
+
+days.forEach((d,i)=>{
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `${d.day}<strong>${d.date}</strong><small>${d.month}</small>`;
+  div.onclick = ()=>{
+    selectedDay = d;
+    document.querySelectorAll("#days .card").forEach(c=>c.classList.remove("active"));
+    div.classList.add("active");
+  };
+  daysBox.appendChild(div);
+});
+
+times.forEach((t)=>{
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `<strong>${t.split(" ")[0]} - ${t.split(" - ")[1].split(" ")[0]}</strong><small>مساءً</small>`;
+  div.onclick = ()=>{
+    if(!selectedDay){
+      alert("اختاري اليوم أولاً");
+      return;
+    }
+    selectedTime = t;
+    document.querySelectorAll("#times .card").forEach(c=>c.classList.remove("active"));
+    div.classList.add("active");
+    openModal();
+  };
+  timesBox.appendChild(div);
+});
+
+function openModal(){
+  document.getElementById("selectedText").innerHTML =
+    `${selectedDay.day} ${selectedDay.date} ${selectedDay.month} • ${selectedTime}`;
+  document.getElementById("modal").classList.add("show");
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("show");
+}
+
+function confirmBooking(){
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const villa = document.getElementById("villa").value.trim();
+  const email = document.getElementById("email").value.trim();
+
+  let valid = true;
+
+  document.getElementById("phoneError").style.display = "none";
+  document.getElementById("emailError").style.display = "none";
+
+  if(!name || !phone || !villa){
+    alert("يرجى تعبئة الاسم ورقم الجوال ورقم الفيلا");
+    return;
+  }
+
+  if(!/^05\d{8}$/.test(phone)){
+    document.getElementById("phoneError").style.display = "block";
+    valid = false;
+  }
+
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    document.getElementById("emailError").style.display = "block";
+    valid = false;
+  }
+
+  if(!valid) return;
+
+  const ticket = "RSN-" + Math.random().toString(36).substring(2,7).toUpperCase();
+
+  document.getElementById("ticketBox").innerHTML = `
+    <b>الاسم:</b> ${name}<br>
+    <b>اليوم:</b> ${selectedDay.day} ${selectedDay.date} ${selectedDay.month}<br>
+    <b>الوقت:</b> ${selectedTime}<br>
+    <b>الموقع:</b> استراحة الماسة الملكية<br>
+    <b>رقم الموعد:</b> ${ticket}
+  `;
+
+  closeModal();
+  document.getElementById("successModal").classList.add("show");
+}
+
+function closeSuccess(){
+  document.getElementById("successModal").classList.remove("show");
+}
+</script>
 
 </body>
 </html>
