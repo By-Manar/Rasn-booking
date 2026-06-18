@@ -5,7 +5,7 @@ const dayInputs = document.querySelectorAll('input[name="day"]');
 const form = document.querySelector("form");
 
 dayInputs.forEach(input => {
-  input.addEventListener("change", function () {
+  input.addEventListener("change", function () { 
     const label = document.querySelector(`label[for="${this.id}"]`);
     selectedDay = label.innerText.replace(/\s+/g, " ").trim();
   });
