@@ -61,7 +61,7 @@ form.addEventListener("submit", async function (e) {
 
   try {
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec",
+      "https://script.google.com/macros/s/AKfycbxKtpVL0AdYBDihtlOO0kl-u3qufHwH89RHhtj5Di4P0eF844mI5TA6PKQdwd8Hxwy1/exec",
       {
         method: "POST",
         body: JSON.stringify(bookingData)
