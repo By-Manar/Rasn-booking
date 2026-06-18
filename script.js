@@ -74,7 +74,10 @@ form.addEventListener("submit", async function (e) {
       alert("هذا الرقم مسجل مسبقًا، لا يمكن الحجز أكثر من مرة بنفس رقم الجوال");
       return;
     }
-
+if (result.status === "full") {
+  alert("عذراً، هذا اليوم مكتمل العدد ولا يمكن الحجز فيه");
+  return;
+}
     if (result.status === "success") {
       alert(
         `✅ تم تأكيد موعدك بنجاح\n\n` +
