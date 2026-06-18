@@ -60,21 +60,34 @@ form.addEventListener("submit", async function (e) {
   };
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec", {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify(bookingData)
-    });
-
-    alert(
-      `تم تأكيد موعدك بنجاح ✅\n\n` +
-      `رقم الموعد: ${ticketNumber}\n` +
-      `اليوم: ${selectedDay}\n` +
-      `الوقت: ${eventTime}`
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(bookingData)
+      }
     );
 
-    form.reset();
-    selectedDay = "";
+    const result = await response.json();
+
+    if (result.status === "duplicate") {
+      alert("هذا الرقم مسجل مسبقًا، لا يمكن الحجز أكثر من مرة بنفس رقم الجوال");
+      return;
+    }
+
+    if (result.status === "success") {
+      alert(
+        `✅ تم تأكيد موعدك بنجاح\n\n` +
+        `رقم الموعد: ${ticketNumber}\n` +
+        `اليوم: ${selectedDay}\n` +
+        `الوقت: ${eventTime}`
+      );
+
+      form.reset();
+      selectedDay = "";
+    } else {
+      alert("حدث خطأ أثناء التسجيل، يرجى المحاولة لاحقًا");
+    }
 
   } catch (error) {
     console.error(error);
