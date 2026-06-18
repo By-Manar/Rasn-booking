@@ -60,17 +60,11 @@ form.addEventListener("submit", async function (e) {
   };
 
   try {
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(bookingData)
-      }
-    );
+    await fetch("https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec", {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(bookingData)
+    });
 
     alert(
       `تم تأكيد موعدك بنجاح ✅\n\n` +
