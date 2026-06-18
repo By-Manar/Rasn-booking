@@ -5,7 +5,7 @@ const dayInputs = document.querySelectorAll('input[name="day"]');
 const form = document.querySelector("form");
 
 dayInputs.forEach(input => {
-  input.addEventListener("change", function () { 
+  input.addEventListener("change", function () {
     const label = document.querySelector(`label[for="${this.id}"]`);
     selectedDay = label.innerText.replace(/\s+/g, " ").trim();
   });
@@ -60,34 +60,30 @@ form.addEventListener("submit", async function (e) {
   };
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec", {
-      method: "POST",
-      body: JSON.stringify(bookingData)
-    });
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(bookingData)
+      }
+    );
 
-    const result = await response.json();
+    alert(
+      `تم تأكيد موعدك بنجاح ✅\n\n` +
+      `رقم الموعد: ${ticketNumber}\n` +
+      `اليوم: ${selectedDay}\n` +
+      `الوقت: ${eventTime}`
+    );
 
-    if (result.status === "duplicate") {
-      alert("هذا الرقم مسجل مسبقًا، لا يمكن الحجز أكثر من مرة بنفس رقم الجوال");
-      return;
-    }
-
-    if (result.status === "success") {
-      alert(
-        `تم تأكيد موعدك بنجاح ✅\n\n` +
-        `رقم الموعد: ${ticketNumber}\n` +
-        `اليوم: ${selectedDay}\n` +
-        `الوقت: ${eventTime}`
-      );
-
-      form.reset();
-      selectedDay = "";
-    } else {
-      alert("حدث خطأ أثناء التسجيل، يرجى المحاولة لاحقًا");
-    }
+    form.reset();
+    selectedDay = "";
 
   } catch (error) {
-    alert("تعذر الاتصال بالنظام، يرجى المحاولة لاحقًا");
     console.error(error);
+    alert("تعذر الاتصال بالنظام، يرجى المحاولة لاحقًا");
   }
 });
