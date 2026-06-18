@@ -60,7 +60,7 @@ form.addEventListener("submit", async function (e) {
   };
 
   try {
-    const response = await fetch("ضع_رابط_Apps_Script_هنا", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbx9fuxsGs56_7xgdfKrUs92t6RCadv-terjTCy7BqNneIR_ueq6qDJUmT1YCqhVxgna/exec", {
       method: "POST",
       body: JSON.stringify(bookingData)
     });
