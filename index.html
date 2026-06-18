@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حجز موعد ملاك رسن</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز موعد ملاك رسن</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -20,11 +20,12 @@
     </div>
 
     <h1>حجز موعد ملاك رسن</h1>
-    <p>يسعدنا دعوتكم لحضور فعالية ملاك رسن، اختر الموعد المناسب وأكمل بياناتك لتأكيد الحضور.</p>
+    <p>يسعدنا دعوتكم لحضور فعالية ملاك رسن، اختر اليوم المناسب وأكمل بياناتك لتأكيد الحضور.</p>
 
     <div class="hero-tags">
       <a href="https://maps.app.goo.gl/8xNA6Y2S74TzhMPK8?g_st=ic" target="_blank">موقع الفعالية</a>
       <span>28 يونيو - 1 يوليو 2026</span>
+      <span>5:00 مساءً - 10:00 مساءً</span>
     </div>
   </section>
 
@@ -32,169 +33,66 @@
 
     <div class="steps">
       <div class="step active">١ اختر اليوم</div>
-      <div class="step">٢ اختر الوقت</div>
-      <div class="step">٣ أكد بياناتك</div>
+      <div class="step">٢ أدخل بياناتك</div>
     </div>
 
     <h2>اختر اليوم</h2>
+
     <div class="cards day-cards">
-      <button type="button" data-day="الأحد 28 يونيو">الأحد <strong>28</strong><small>يونيو</small></button>
-      <button type="button" data-day="الإثنين 29 يونيو">الإثنين <strong>29</strong><small>يونيو</small></button>
-      <button type="button" data-day="الثلاثاء 30 يونيو">الثلاثاء <strong>30</strong><small>يونيو</small></button>
-      <button type="button" data-day="الأربعاء 1 يوليو">الأربعاء <strong>1</strong><small>يوليو</small></button>
+      <input type="radio" name="day" id="day1">
+      <label for="day1">
+        الأحد
+        <strong>28</strong>
+        <small>يونيو</small>
+      </label>
+
+      <input type="radio" name="day" id="day2">
+      <label for="day2">
+        الإثنين
+        <strong>29</strong>
+        <small>يونيو</small>
+      </label>
+
+      <input type="radio" name="day" id="day3">
+      <label for="day3">
+        الثلاثاء
+        <strong>30</strong>
+        <small>يونيو</small>
+      </label>
+
+      <input type="radio" name="day" id="day4">
+      <label for="day4">
+        الأربعاء
+        <strong>1</strong>
+        <small>يوليو</small>
+      </label>
     </div>
 
-    <h2>اختر الوقت</h2>
-    <div class="cards time">
-      <button type="button" data-time="5:00 - 6:00 مساءً">5:00 - 6:00 <small>مساءً</small></button>
-      <button type="button" data-time="6:00 - 7:00 مساءً">6:00 - 7:00 <small>مساءً</small></button>
-      <button type="button" data-time="7:00 - 8:00 مساءً">7:00 - 8:00 <small>مساءً</small></button>
-      <button type="button" data-time="8:00 - 9:00 مساءً">8:00 - 9:00 <small>مساءً</small></button>
-      <button type="button" data-time="9:00 - 10:00 مساءً">9:00 - 10:00 <small>مساءً</small></button>
-    </div>
+    <p class="note">بعد اختيار اليوم، أكمل بياناتك لتأكيد الحضور.</p>
 
-    <p class="note">بعد اختيار اليوم والوقت ستظهر نافذة تأكيد البيانات.</p>
+    <div class="form-card">
+      <h2>بيانات الحضور</h2>
+
+      <form>
+        <label>الاسم الكامل <span>*</span></label>
+        <input type="text" placeholder="الاسم كما في الهوية" required>
+
+        <label>رقم الجوال <span>*</span></label>
+        <input type="tel" placeholder="05XXXXXXXX" required>
+
+        <label>رقم الفيلا <span>*</span></label>
+        <input type="text" placeholder="مثال: 57" required>
+
+        <label>البريد الإلكتروني <small>(اختياري)</small></label>
+        <input type="email" placeholder="example@email.com">
+
+        <button type="submit">تأكيد الموعد</button>
+      </form>
+    </div>
 
   </section>
 
 </main>
-
-<div class="modal" id="bookingModal">
-  <div class="modal-card">
-    <h2>تأكيد الموعد</h2>
-    <p class="selected-date" id="selectedText"></p>
-
-    <form>
-      <label>الاسم الكامل</label>
-      <input type="text" id="fullName" placeholder="الاسم كما في الهوية">
-
-      <label>رقم الجوال</label>
-      <input type="tel" id="phone" placeholder="05XXXXXXXX">
-
-      <label>رقم الفيلا</label>
-      <input type="text" id="villa" placeholder="مثال: A-12">
-
-      <label>البريد الإلكتروني (اختياري)</label>
-      <input type="email" id="email" placeholder="example@email.com">
-
-      <div class="modal-actions">
-        <button class="submit" type="button" onclick="confirmBooking()">تأكيد الموعد</button>
-        <button class="cancel" type="button" onclick="closeModal()">إلغاء</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="success-modal" id="successModal">
-  <div class="success-card">
-
-    <div class="success-icon">✓</div>
-
-    <h2>تم تأكيد موعدك</h2>
-    <p class="success-subtitle">نراك في موعدك - حياك الله</p>
-
-    <div class="ticket-card">
-      <div class="ticket-row">
-        <span>الاسم</span>
-        <strong id="successName"></strong>
-      </div>
-
-      <div class="ticket-row">
-        <span>اليوم</span>
-        <strong id="successDay"></strong>
-      </div>
-
-      <div class="ticket-row">
-        <span>الوقت</span>
-        <strong id="successTime"></strong>
-      </div>
-
-      <div class="ticket-row">
-        <span>المكان</span>
-        <strong>قاعة الماسة</strong>
-      </div>
-
-      <div class="ticket-row">
-        <span>رقم الموعد</span>
-        <strong id="ticketNumber"></strong>
-      </div>
-    </div>
-
-    <p class="success-note">يرجى الحضور في الموعد المحدد ومعك إثبات الهوية. ستصلك رسالة تأكيد على جوالك.</p>
-
-    <button class="done-btn" onclick="closeSuccess()">تم</button>
-
-  </div>
-</div>
-
-<script>
-let selectedDay = "";
-let selectedTime = "";
-
-const dayButtons = document.querySelectorAll('.day-cards button');
-const timeButtons = document.querySelectorAll('.time button');
-const modal = document.getElementById('bookingModal');
-const selectedText = document.getElementById('selectedText');
-
-dayButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    dayButtons.forEach(btn => btn.classList.remove('selected'));
-    button.classList.add('selected');
-    selectedDay = button.dataset.day;
-  });
-});
-
-timeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    if(!selectedDay){
-      alert("يرجى اختيار اليوم أولاً");
-      return;
-    }
-
-    timeButtons.forEach(btn => btn.classList.remove('selected'));
-    button.classList.add('selected');
-    selectedTime = button.dataset.time;
-
-    selectedText.textContent = `${selectedDay} • ${selectedTime}`;
-    modal.classList.add('show');
-  });
-});
-
-function closeModal(){
-  modal.classList.remove('show');
-}
-
-function generateTicket(){
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let code = "RSN-";
-  for(let i = 0; i < 5; i++){
-    code += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return code;
-}
-
-function confirmBooking(){
-  const name = document.getElementById("fullName").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-
-  if(!name || !phone){
-    alert("يرجى تعبئة الاسم ورقم الجوال");
-    return;
-  }
-
-  document.getElementById("successName").textContent = name;
-  document.getElementById("successDay").textContent = selectedDay;
-  document.getElementById("successTime").textContent = selectedTime;
-  document.getElementById("ticketNumber").textContent = generateTicket();
-
-  modal.classList.remove("show");
-  document.getElementById("successModal").classList.add("show");
-}
-
-function closeSuccess(){
-  document.getElementById("successModal").classList.remove("show");
-}
-</script>
 
 </body>
 </html>
