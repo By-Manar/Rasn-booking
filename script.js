@@ -25,11 +25,7 @@ function generateTicket() {
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const submitBtn = document.querySelector('button[type="submit"]');
-  const originalText = submitBtn.innerText;
-
-  submitBtn.disabled = true;
-  submitBtn.innerText = "جاري الحجز...";
+  
 
   const resetButton = () => {
     submitBtn.disabled = false;
