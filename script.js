@@ -25,6 +25,17 @@ function generateTicket() {
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
+  const submitBtn = document.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerText;
+
+  submitBtn.disabled = true;
+  submitBtn.innerText = "جاري الحجز...";
+
+  const resetButton = () => {
+    submitBtn.disabled = false;
+    submitBtn.innerText = originalText || "تأكيد الحجز";
+  };
+
   const fullName = document.querySelector('input[type="text"]').value.trim();
   const phone = document.querySelector('input[type="tel"]').value.trim();
   const villa = document.querySelectorAll('input[type="text"]')[1].value.trim();
@@ -32,11 +43,13 @@ form.addEventListener("submit", async function (e) {
 
   if (!selectedDay) {
     alert("يرجى اختيار اليوم أولاً");
+    resetButton();
     return;
   }
 
   if (!fullName || !phone || !villa) {
     alert("يرجى تعبئة الاسم ورقم الجوال ورقم الفيلا");
+    resetButton();
     return;
   }
 
@@ -44,6 +57,7 @@ form.addEventListener("submit", async function (e) {
 
   if (!phoneRegex.test(phone)) {
     alert("يرجى إدخال رقم جوال صحيح يبدأ بـ 05 ويتكون من 10 أرقام");
+    resetButton();
     return;
   }
 
@@ -72,12 +86,16 @@ form.addEventListener("submit", async function (e) {
 
     if (result.status === "duplicate") {
       alert("هذا الرقم مسجل مسبقًا، لا يمكن الحجز أكثر من مرة بنفس رقم الجوال");
+      resetButton();
       return;
     }
-if (result.status === "full") {
-  alert("عذراً، هذا اليوم مكتمل العدد ولا يمكن الحجز فيه");
-  return;
-}
+
+    if (result.status === "full") {
+      alert("عذراً، هذا اليوم مكتمل العدد ولا يمكن الحجز فيه");
+      resetButton();
+      return;
+    }
+
     if (result.status === "success") {
       alert(
         `✅ تم تأكيد موعدك بنجاح\n\n` +
@@ -88,12 +106,15 @@ if (result.status === "full") {
 
       form.reset();
       selectedDay = "";
+      resetButton();
     } else {
       alert("حدث خطأ أثناء التسجيل، يرجى المحاولة لاحقًا");
+      resetButton();
     }
 
   } catch (error) {
     console.error(error);
     alert("تعذر الاتصال بالنظام، يرجى المحاولة لاحقًا");
+    resetButton();
   }
 });
