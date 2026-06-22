@@ -25,7 +25,11 @@ function generateTicket() {
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  
+  const submitBtn = document.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerText;
+
+  submitBtn.disabled = true;
+  submitBtn.innerText = "جاري تأكيد الحجز...";
 
   const resetButton = () => {
     submitBtn.disabled = false;
@@ -80,6 +84,12 @@ form.addEventListener("submit", async function (e) {
 
     const result = await response.json();
 
+    if (result.status === "closed") {
+      alert("نعتذر، تم اكتمال الحجوزات لهذا اليوم. يرجى اختيار يوم آخر.");
+      resetButton();
+      return;
+    }
+
     if (result.status === "duplicate") {
       alert("هذا الرقم مسجل مسبقًا، لا يمكن الحجز أكثر من مرة بنفس رقم الجوال");
       resetButton();
@@ -103,10 +113,11 @@ form.addEventListener("submit", async function (e) {
       form.reset();
       selectedDay = "";
       resetButton();
-    } else {
-      alert("حدث خطأ أثناء التسجيل، يرجى المحاولة لاحقًا");
-      resetButton();
+      return;
     }
+
+    alert("حدث خطأ أثناء التسجيل، يرجى المحاولة لاحقًا");
+    resetButton();
 
   } catch (error) {
     console.error(error);
