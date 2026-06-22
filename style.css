@@ -278,4 +278,17 @@ button:hover{
   .cards{
     gap:10px;
   }
+  .full-booked{
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.booking-status{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  font-weight:700;
+  color:#d8b46a;
+}
 }
